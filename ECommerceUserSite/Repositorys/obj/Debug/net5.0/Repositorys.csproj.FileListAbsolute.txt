@@ -1,0 +1,15 @@
+D:\finalproject\ECommerceUserSite\Repositorys\bin\Debug\net5.0\Repositorys.deps.json
+D:\finalproject\ECommerceUserSite\Repositorys\bin\Debug\net5.0\Repositorys.runtimeconfig.json
+D:\finalproject\ECommerceUserSite\Repositorys\bin\Debug\net5.0\Repositorys.runtimeconfig.dev.json
+D:\finalproject\ECommerceUserSite\Repositorys\bin\Debug\net5.0\Repositorys.dll
+D:\finalproject\ECommerceUserSite\Repositorys\bin\Debug\net5.0\ref\Repositorys.dll
+D:\finalproject\ECommerceUserSite\Repositorys\bin\Debug\net5.0\Repositorys.pdb
+D:\finalproject\ECommerceUserSite\Repositorys\obj\Debug\net5.0\Repositorys.csproj.AssemblyReference.cache
+D:\finalproject\ECommerceUserSite\Repositorys\obj\Debug\net5.0\Repositorys.GeneratedMSBuildEditorConfig.editorconfig
+D:\finalproject\ECommerceUserSite\Repositorys\obj\Debug\net5.0\Repositorys.AssemblyInfoInputs.cache
+D:\finalproject\ECommerceUserSite\Repositorys\obj\Debug\net5.0\Repositorys.AssemblyInfo.cs
+D:\finalproject\ECommerceUserSite\Repositorys\obj\Debug\net5.0\Repositorys.csproj.CoreCompileInputs.cache
+D:\finalproject\ECommerceUserSite\Repositorys\obj\Debug\net5.0\Repositorys.dll
+D:\finalproject\ECommerceUserSite\Repositorys\obj\Debug\net5.0\ref\Repositorys.dll
+D:\finalproject\ECommerceUserSite\Repositorys\obj\Debug\net5.0\Repositorys.pdb
+D:\finalproject\ECommerceUserSite\Repositorys\obj\Debug\net5.0\Repositorys.genruntimeconfig.cache

@@ -1,0 +1,17 @@
+D:\finalproject\ECommerceUserSite\DBContext\obj\Debug\net5.0\DBContext.csproj.AssemblyReference.cache
+D:\finalproject\ECommerceUserSite\DBContext\obj\Debug\net5.0\DBContext.GeneratedMSBuildEditorConfig.editorconfig
+D:\finalproject\ECommerceUserSite\DBContext\obj\Debug\net5.0\DBContext.AssemblyInfoInputs.cache
+D:\finalproject\ECommerceUserSite\DBContext\obj\Debug\net5.0\DBContext.AssemblyInfo.cs
+D:\finalproject\ECommerceUserSite\DBContext\obj\Debug\net5.0\DBContext.csproj.CoreCompileInputs.cache
+D:\finalproject\ECommerceUserSite\DBContext\bin\Debug\net5.0\DBContext.deps.json
+D:\finalproject\ECommerceUserSite\DBContext\bin\Debug\net5.0\DBContext.runtimeconfig.json
+D:\finalproject\ECommerceUserSite\DBContext\bin\Debug\net5.0\DBContext.runtimeconfig.dev.json
+D:\finalproject\ECommerceUserSite\DBContext\bin\Debug\net5.0\DBContext.dll
+D:\finalproject\ECommerceUserSite\DBContext\bin\Debug\net5.0\ref\DBContext.dll
+D:\finalproject\ECommerceUserSite\DBContext\bin\Debug\net5.0\DBContext.pdb
+D:\finalproject\ECommerceUserSite\DBContext\bin\Debug\net5.0\Models.dll
+D:\finalproject\ECommerceUserSite\DBContext\bin\Debug\net5.0\Models.pdb
+D:\finalproject\ECommerceUserSite\DBContext\obj\Debug\net5.0\DBContext.dll
+D:\finalproject\ECommerceUserSite\DBContext\obj\Debug\net5.0\ref\DBContext.dll
+D:\finalproject\ECommerceUserSite\DBContext\obj\Debug\net5.0\DBContext.pdb
+D:\finalproject\ECommerceUserSite\DBContext\obj\Debug\net5.0\DBContext.genruntimeconfig.cache
