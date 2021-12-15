@@ -1,0 +1,60 @@
+﻿@model IEnumerable<EbayView.Models.ViewModel.Products.GetProductsOutputModel>
+
+@{
+    ViewData["Title"] = "Index product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 style="width:100%;text-align:center;display:block;margin:10px auto;">All Products</h1>
+
+<p style="width:100%;text-align:center;display:block;margin:10px auto;">
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+<table class="table table-striped table-bordered table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>#n</th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th> 
+            <th>Edit</th>
+            <th>Details</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int i = 1;
+        }
+@foreach (var item in Model) {
+        <tr>
+            <td>@i</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td> 
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ProductId" class="btn btn-primary">Edit</a> 
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.ProductId" class="btn btn-primary">Details</a>
+            </td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@item.ProductId" class="btn btn-primary">Delete</a>
+            </td>
+            @{i++; }
+        </tr> 
+}
+    </tbody>
+</table>

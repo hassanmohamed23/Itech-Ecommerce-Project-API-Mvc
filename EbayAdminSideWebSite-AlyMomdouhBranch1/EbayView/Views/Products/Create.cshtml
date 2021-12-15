@@ -1,0 +1,138 @@
+﻿@model EbayView.Models.ViewModel.Products.CreateProductInputModel
+ 
+@section styleslink  {   <link href="~/css/addProduct.css" rel="stylesheet"/> 
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+ @*<script src="~/js/addProduct.js"></script> *@
+@*<style>
+	.product-image{
+        background-image: url("~/img/Uploads/Photos/3faf7bf8-398f-4188-a0f9-b7654d039360.jpg")  
+		}
+</style>*@
+
+} 
+
+<div class="w-100 text-center m-2">
+	<h1 class="bg-primary aly">Create New Product Page</h1>
+</div>
+<hr />
+<div class="w-75 mx-auto">
+	<div class="col-md-12">
+		<form asp-action="Create"  id="createProduct">   @*asp-action="Create"*@
+			@*<div class="col-md-2"></div>*@
+			<div class="col-md-12">
+				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+				<div class="row form-group">
+					<div class="col-6 bp-2">
+						<label asp-for="Name" class="control-label"></label>
+						<input asp-for="Name" id="Name" class="form-control" />
+						<span asp-validation-for="Name" class="text-danger"></span>
+					</div>
+					<div class="col-6 bp-2">
+						<label asp-for="Price" class="control-label"></label>
+						<input asp-for="Price" id="Price" class="form-control" />
+						<span asp-validation-for="Price" class="text-danger"></span>
+					</div>
+				</div>
+				<div class="row form-group">
+					<div class="col-6 bp-2">
+						<label asp-for="Quantity" class="control-label"></label>
+						<input asp-for="Quantity" id="Quantity" class="form-control" />
+						<span asp-validation-for="Quantity" class="text-danger"></span>
+					</div>
+					<div class="col-6 bp-2">
+						<label asp-for="Description" class="control-label"></label>
+						<input asp-for="Description" id="Description" class="form-control" />
+						<span asp-validation-for="Description" class="text-danger"></span>
+					</div>
+				</div>
+				<div class="row form-group">
+					<div class="col-6 bp-2">
+						<label asp-for="AdminId" class="control-label"></label>    @*<label> Select Admin Name Category</label>*@
+						<input asp-for="AdminId" id="AdminId" class="form-control" />
+						@*<select asp-for="AdminId" class="form-control" asp-items="@Model."></select>*@ 
+						 
+					</div>
+					<div class="col-6 bp-2">
+						<label asp-for="CatId" class="control-label"></label>
+						@*<select asp-for="CatId" class="form-control" asp-items="ViewBag."></select>*@
+						<select class="form-control" name="CatId">
+							@foreach (var category in ViewBag.AvailableCategories)
+							{
+								<option value="@category.CategoryId">@category.CategoryName</option>
+							}
+						</select>
+					</div>
+				</div>
+				<div class="row form-group">
+					<div class="col-6 bp-2">
+						<label asp-for="BrandId" class="control-label">Select Brand Name </label>
+						<select class="form-control" name="BrandId">
+							@foreach (var Brands in ViewBag.AvailableBrands)
+							{
+								<option value="@Brands.BrandId">@Brands.BrandName</option>
+							}
+						</select>					
+					</div>
+					<div class="col-6 bp-2">
+						<label asp-for="StockId" class="control-label">Select Stock Name</label>
+						<select class="form-control" name="StockId">
+							@foreach (var Stock in ViewBag.AvailableStock)
+							{
+								<option value="@Stock.StockId">@Stock.StockName</option>
+							}
+						</select>					
+					</div> 
+				<div class="row form-group">
+					<label asp-for="SubCatId" class="control-label">Select SubCategory Name</label>
+					<select class="form-control" name="SubCatId">
+							@foreach (var SubCategory in ViewBag.AvailableSubCategories)
+							{
+								<option value="@SubCategory.SubCategoryId">@SubCategory.SubCatName</option>
+							}
+					</select>				</div> 
+			</div>
+			@*<div class="col-md-2"></div>*@
+			<div class="row">
+				<div class="col-12">
+					<div class="product-info">
+						 <div class="product-image">
+							<p class="text">
+								 @*<h4>product image </h4>*@
+								@*<img id="blah" src="#" />*@
+							</p>
+						</div> 
+						<div class="upload-image-sec">
+							<!-- upload inputs -->
+							<p class="text"><img src="~/img/camera.png" alt="">upload image</p>
+							<div class="upload-catalouge">
+								<input type="file" class="fileupload" name="imgspathes" id="first-file-upload-btn" hidden accept=".png, .jpg">
+								<label for="first-file-upload-btn" class="upload-image"></label>
+
+								<input type="file" class="fileupload" name="imgspathes" id="second-file-upload-btn" hidden accept=".png, .jpg">
+								<label for="second-file-upload-btn" class="upload-image"></label>
+
+								<input type="file" class="fileupload" name="imgspathes" id="third-file-upload-btn" hidden accept=".png, .jpg">
+								<label for="third-file-upload-btn" class="upload-image"></label>
+
+								<input type="file" class="fileupload" name="imgspathes" id="fourth-file-upload-btn" hidden accept=".png, .jpg">
+								<label for="fourth-file-upload-btn" class="upload-image"></label>
+							</div>
+						</div>
+					</div>
+			    </div>
+			</div>
+			<div class="row form-group text-center">
+				<input type="submit" id="saveBtn" value="Create new Product" class="btn btn-primary" />
+			</div>
+		</form>
+	</div>
+</div> 
+ 
+<div class="w-100 text-center">
+	<a asp-action="Index" class="btn btn-primary">Back to List</a>
+</div>
+
+@section Scriptslink  {   <script src="~/js/addProduct.js"></script> 
+}
+

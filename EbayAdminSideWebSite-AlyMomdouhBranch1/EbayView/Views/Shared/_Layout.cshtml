@@ -1,0 +1,322 @@
+﻿@using EbayView.Services
+@using Microsoft.AspNetCore.Http 
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" /> 
+    <title>@ViewData["Title"] - EbayView</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> 
+    <link href="~/css/styles.css" rel="stylesheet" /> 
+    <link href="~/css/style1.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet"/>  
+    <link href="~/css/main.css" rel="stylesheet"/>  
+    @*@await RenderSectionAsync("styles", required: false)*@
+    @RenderSection("styleslink", false)
+</head>
+<body class="sb-nav-fixed">
+            <!-- Header-->
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark pt-2" style="height:75px">
+            <!-- Navbar Brand-->
+            <a class="navbar-brand ps-3" href="@Url.Action("Index", "Home")">Shoppy</a>
+            <!-- Sidebar Toggle-->
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <!-- Navbar Search-->
+            @*
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                </div>
+            </form>
+            <!-- Navbar-->
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#!">Settings</a></li>
+                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+                            <div class="profile_details">		
+								        <ul>
+									        <li class="dropdown profile_details_drop">
+										        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+											        <div class="profile_img">	
+												        <span class="prfil-img"><img src="~/img/p1.png" alt=""> </span> 
+												        <div class="user-name">
+													        <p>Malorum</p>
+													        <span>Administrator</span>
+												        </div>
+												       <i class="fa fa-angle-down lnr"></i>
+												        <i class="fa fa-angle-up lnr"></i> 
+												        <div class="clearfix"></div>	
+											        </div>	
+										        </a>
+										        <ul class="dropdown-menu drp-mnu">
+											        <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li> 
+											        <li> <a href="#"><i class="fa fa-user"></i> Profile</a> </li> 
+											        <li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+										        </ul>
+									        </li>
+								        </ul>
+							</div>
+							<div class="clearfix"> </div>
+                            *@
+            @if (HttpContextAccessor.HttpContext.Session.GetObjectFromJson("admin").AdminId !=0 )
+            @*@if (ViewBag.admin!=null )*@
+            {  
+            <div class="header-btn-lg pr-0 w-25 d-block mr-0 ml-auto" style=" color: white;">
+                <div class="widget-content p-1 mr-0 ml-auto">
+                    <div class="widget-content-wrapper">
+                        <div class="widget-content-left">
+                            <div class="btn-group">
+                                <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
+                                   @* @if (@ViewBag.admin.Img!=null)*@
+                                    @if (HttpContextAccessor.HttpContext.Session.GetObjectFromJson("admin").Img!=null)
+                                    {
+                                        @*<img width="42" class="rounded-circle" src="@ViewBag.admin.Img" alt="">*@
+                                        <img width="42" class="rounded-circle" style="width: 80px;"  alt="admin image"
+                                        src="@HttpContextAccessor.HttpContext.Session.GetObjectFromJson("admin").Img">
+                                    }
+                                    else
+                                    {
+                                        <img width="42" class="rounded-circle" src="~/img/defaultuserimg.png" style="width: 80px;"  alt="admin image">
+                                    }    
+                                            <i class="fa fa-angle-down ml-2 opacity-8"></i>
+                                        </a>
+                                        <div tabindex="-1" role="menu" aria-hidden="true" class="rm-pointers dropdown-menu-lg dropdown-menu dropdown-menu-right" style="">
+                                            <div class="dropdown-menu-header" style="margin-bottom:-11px">
+                                                <div class="dropdown-menu-header-inner bg-info">
+                                                    <div class="menu-header-image opacity-2" style="background-image: url('~/img/city3.jpg');"></div>
+                                                    <div class="menu-header-content text-left">
+                                                        <div class="widget-content p-0">
+                                                            <div class="widget-content-wrapper">
+                                                                <div class="widget-content-left mr-3">
+                                                                   @if (HttpContextAccessor.HttpContext.Session.GetObjectFromJson("admin").Img!=null)
+                                                                    {
+                                                                        @*<img width="42" class="rounded-circle" src="@ViewBag.admin.Img" alt="">*@
+                                                                        <img width="42" class="rounded-circle"  style="width: 80px;"  alt="admin image"
+                                                                        src="@HttpContextAccessor.HttpContext.Session.GetObjectFromJson("admin").Img" >
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <img width="42" class="rounded-circle" src="~/img/defaultuserimg.png" style="width: 80px;"  alt="admin image">
+                                                                    }  
+                                                                </div>
+                                                                <div class="widget-content-left">
+                                                                    @*<div class="widget-heading"> @ViewBag.admin.UserName</div>*@
+                                                                    <div class="widget-heading"> @HttpContextAccessor.HttpContext.Session.GetObjectFromJson("admin").UserName</div>
+                                                                    <div class="widget-subheading opacity-8"> @HttpContextAccessor.HttpContext.Session.GetObjectFromJson("admin").FistName @HttpContextAccessor.HttpContext.Session.GetObjectFromJson("admin").LastName</div>
+                                                                    <div class="widget-subheading opacity-8"> @HttpContextAccessor.HttpContext.Session.GetObjectFromJson("admin").Email</div>
+                                                                </div>
+                                                                <div class="widget-content-right mr-2">
+                                                                    @*<button class="btn-pill btn-shadow btn-shine btn btn-focus">Logout</button>*@
+                                                                    <a class=" btn-pill btn-shadow btn-shine btn btn-focus" href="@Url.Action("Logout", "Account")">Logout</a> 
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="widget-content-left  ml-3 header-user-info">
+                                    <div class="widget-heading"> @HttpContextAccessor.HttpContext.Session.GetObjectFromJson("admin").UserName </div>
+                                    <div class="widget-subheading"> @HttpContextAccessor.HttpContext.Session.GetObjectFromJson("admin").Email </div>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+            }
+                
+    </nav>
+    <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            <div class="sb-sidenav-menu-heading">Core</div>
+                            <a class="nav-link" href="@Url.Action("Index", "Home")">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Dashboard
+                            </a>
+                            @*<div class="sb-sidenav-menu-heading">Interface</div> *@ 
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseAdmins" aria-expanded="false" aria-controls="collapseAdmins">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Admins
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseAdmins" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="@Url.Action("Index", "Admins")">view all Admins</a> 
+                                    <a class="nav-link" href="@Url.Action("Create", "Admins")">create new Admin</a> 
+                                </nav>
+                            </div> 
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseClients" aria-expanded="false" aria-controls="collapseClients">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Users
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseClients" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="@Url.Action("Index", "Users")">view all Users</a> 
+                                </nav>
+                            </div> 
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsecatg" aria-expanded="false" aria-controls="collapsecatg">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Categories
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapsecatg" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="@Url.Action("Index", "Categories")">view all Categories</a>
+                                    <a class="nav-link" href="@Url.Action("Create", "Categories")">create Categories</a> 
+                                 </nav>
+                            </div> 
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseProducts" aria-expanded="false" aria-controls="collapseProducts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Products
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseProducts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="@Url.Action("Index", "Products")">view all products</a>
+                                    <a class="nav-link" href="@Url.Action("Create", "Products")">create product</a> 
+                                    @*<a class="nav-link" href="/Products/index">view all products</a>
+                                    <a class="nav-link" href="/Products/create">create product</a>*@
+                                </nav>
+                            </div> 
+                            @*<a class="nav-link collapsed" href="@Url.Action("Index", "Categories")">
+                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                                Categories  
+                            </a>*@
+                            <a class="nav-link" href="@Url.Action("Index", "Offers")" aria-expanded="false">
+                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                                Offers
+                                <div class="sb-sidenav-collapse-arrow"> </div>
+                            </a>
+                            <a class="nav-link" href="@Url.Action("Index", "SubCategories")" aria-expanded="false">
+                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                                Subcategories
+                                <div class="sb-sidenav-collapse-arrow"> </div>
+                            </a>
+                            <a class="nav-link " href="@Url.Action("Index", "Brands")" aria-expanded="false">
+                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                                Brands
+                                <div class="sb-sidenav-collapse-arrow">  </div>
+                            </a>
+                            <a class="nav-link " href="@Url.Action("Index", "Stocks")" aria-expanded="false">
+                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                                Stocks
+                                <div class="sb-sidenav-collapse-arrow">  </div>
+                            </a>
+                            <a class="nav-link " href="@Url.Action("Index", "Shippers")" aria-expanded="false">
+                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                                Shippers
+                                <div class="sb-sidenav-collapse-arrow">  </div>
+                            </a> 
+                            <a class="nav-link " href="@Url.Action("Index", "Comment")" aria-expanded="false">
+                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                                Comment
+                                <div class="sb-sidenav-collapse-arrow">  </div>
+                            </a>  
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                                Pages
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                        Authentication
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav">
+                                            <a class="nav-link" href="login.html">Login</a>
+                                            <a class="nav-link" href="register.html">Register</a>
+                                            <a class="nav-link" href="password.html">Forgot Password</a>
+                                        </nav>
+                                    </div>
+                                   @* <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+                                        Error
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav">
+                                            <a class="nav-link" href="401.html">401 Page</a>
+                                            <a class="nav-link" href="404.html">404 Page</a>
+                                            <a class="nav-link" href="500.html">500 Page</a>
+                                        </nav>
+                                    </div>*@
+                                </nav>
+                            </div>
+                            @*<div class="sb-sidenav-menu-heading">Addons</div>
+                            <a class="nav-link" href="charts.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Charts
+                            </a>
+                            <a class="nav-link" href="tables.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Tables
+                            </a>*@
+                        </div>
+                    </div>
+                    @*<div class="sb-sidenav-footer">
+                        <div class="small">Logged in as:</div>
+                        Start Bootstrap
+                    </div>*@
+                </nav>
+            </div>
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4">
+                       @* <h1 class="mt-4">Dashboard</h1>*@
+                        <main role="main" class="pb-3 mt-5 mb-5">
+                            @RenderBody()
+                        </main>
+                    </div>
+                </main>
+                <footer class="border-top footer text-muted ">
+                    <div class="container">
+                        &copy; 2021 - EbayView - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                    </div>
+                </footer>
+           </div>
+    </div>
+
+@*<div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>*@
+
+    
+    @*<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>*@
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>*@
+     @*<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>*@ 
+     @*<script src="~/js/datatables-simple-demo.js"></script>*@
+     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>  
+    @*<script src="~/js/jquery.min.js"></script> 
+    <script src="~/js/bootstrap.js"></script> *@
+    
+    <script src="~/js/scripts.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scriptslink", false)
+</body>
+</html>

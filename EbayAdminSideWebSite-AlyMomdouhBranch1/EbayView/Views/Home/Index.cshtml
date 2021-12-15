@@ -1,0 +1,269 @@
+﻿@model EbayView.Models.ViewModel.GetStatisticsOutputModel
+
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section styleslink
+{
+    @*<h1>User Info</h1>*@
+     @*<link href="~/css/homeindex.css" rel="stylesheet"/> *@
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+       <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+     
+     <style>
+         a{
+              color:white;
+              text-decoration:none;
+         }
+     </style>
+}
+@*  
+<div class="market-updates">
+			<div class="col-md-4 market-update-gd">
+				<div class="market-update-block clr-block-1">
+					<div class="col-md-8 market-update-left">
+						<h3> </h3>
+						<h4>Registered User</h4> 
+					</div>
+					<div class="col-md-4 market-update-right">
+						 <img src="~/img/RegisteredUser.png"/>
+					</div>
+				  <div class="clearfix"> </div>
+				</div>
+			</div>
+			<div class="col-md-4 market-update-gd">
+				<div class="market-update-block clr-block-2">
+				 <div class="col-md-8 market-update-left">
+					<h3>135</h3>
+					<h4>Daily Visitors</h4>
+					<p>Other hand, we denounce</p>
+				  </div>
+					<div class="col-md-4 market-update-right">
+						<i class="fa fa-eye"> </i> 
+					</div>
+				  <div class="clearfix"> </div>
+				</div>
+			</div>
+			<div class="col-md-4 market-update-gd">
+				<div class="market-update-block clr-block-3">
+					<div class="col-md-8 market-update-left">
+						<h3>23</h3>
+						<h4>New product</h4>
+						<p>the new product add to website</p>
+					</div>
+					<div class="col-md-4 market-update-right"> 
+						<img src="~/img/newproduct.png" />
+					</div>
+				  <div class="clearfix"> </div>
+				</div>
+			</div><div class="clearfix"> </div>
+</div>
+*@
+<div class="tab-content">
+	<div class="tab-pane tabs-animation fade active show" id="tab-content-1" role="tabpanel">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mb-3 bg-primary widget-chart text-white card-border">
+                    <div class="icon-wrapper rounded-circle">
+                        <div class="icon-wrapper-bg bg-white opacity-1"></div>
+                        <i class="lnr lnr-user text-white"></i>
+                    </div>
+                    <div class="widget-numbers">3</div>
+                    <div class="widget-subheading">Total Users</div>
+                    <div class="widget-description text-success">
+                        <a href="@Url.Action("Index", "Users")">
+                            <i class="fa fa-angle-up "> </i>
+                            <span class="pl-1">view</span>
+                        </a> 
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-3 bg-success widget-chart text-white card-border"> 
+                    <div class="icon-wrapper rounded-circle" style="border-radius:50%;background-color: lightgreen;">
+                        <div class="icon-wrapper-bg opacity-10"></div> 
+                        @*<i class="fas fa-users-cog  text-success"></i>*@
+                          <img style="width:50px;display:block;margin:auto;"
+                            src="https://img.icons8.com/external-itim2101-fill-itim2101/64/000000/external-admin-network-technology-itim2101-fill-itim2101-1.png"/>
+                     </div>
+                    <div class="widget-numbers">@Model.AdminCount</div>
+                    <div class="widget-subheading">Admin</div>
+                    <div class="widget-description text-white">
+                        <a href="@Url.Action("Index", "Admins")">
+                            <span class="pr-1">view</span>
+                            <i class="fa fa-arrow-left "> </i>
+                        </a>       
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-3 bg-warning widget-chart text-white card-border">
+                    <div class="icon-wrapper rounded-circle">
+                        <div class="icon-wrapper-bg bg-white opacity-2"></div>
+                        @*<i class="lnr-laptop-phone text-white"></i>*@
+                        <img  style="width:30px;display:block;margin:auto;"
+                        src="https://img.icons8.com/external-sbts2018-mixed-sbts2018/58/000000/external-new-product-cyber-monday-sbts2018-mixed-sbts2018.png"/>
+                    </div>
+                    <div class="widget-numbers">@Model.ProductCount</div>
+                    <div class="widget-subheading">New Product </div>
+                    <div class="widget-description text-white"> 
+                         <a href="@Url.Action("Index", "Products")">
+                             <span class="pl-1">view</span>
+                            <i class="fa fa-arrow-left"> </i> 
+                        </a> 
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-3 bg-focus widget-chart text-white card-border">
+                    <div class="icon-wrapper rounded-circle">
+                        <div class="icon-wrapper-bg bg-info opacity-5"></div>
+                        <img style="width:30px;display:block;margin:auto;"
+                        src="https://img.icons8.com/office/16/000000/category.png"/>
+                    </div>
+                    <div class="widget-numbers">@Model.CategoryCount</div>
+                    <div class="widget-subheading">Total Categories</div>
+                    <div class="widget-description text-info"> 
+                        <a href="@Url.Action("Index", "Categories")">
+                            <i class="fa fa-arrow-right"> </i>
+                            <span class="pl-1">view</span>
+                        </a> 
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-3 bg-danger widget-chart text-white card-border">
+                    <div class="icon-wrapper rounded">
+                        <div class="icon-wrapper-bg bg-white opacity-2"></div>
+                        <i class="lnr lnr-list text-white"></i> 
+                    </div>
+                    <div class="widget-numbers">@Model.SubCategoryCount</div>
+                    <div class="widget-subheading">Total SubCategory</div>
+                    <div class="widget-description text-white"> 
+                        <a href="@Url.Action("Index", "SubCategories")">
+                            <i class="fa fa-angle-up"> </i>
+                            <span class="pl-1">view</span>
+                        </a> 
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-3 bg-info widget-chart text-white card-border">
+                    <div class="icon-wrapper rounded">
+                        <div class="icon-wrapper-bg bg-focus opacity-5"></div>
+                        <img  style="width:50px;display:block;margin:auto;"
+                         src="https://img.icons8.com/external-outline-geotatah/64/000000/external-brand-brand-positioning-outline-geotatah-6.png"/>
+                     </div>
+                    <div class="widget-numbers">@Model.BrandCount</div>
+                    <div class="widget-subheading">Total Brand</div>
+                    <div class="widget-description text-white">
+                        <a href="@Url.Action("Index", "Brands")">
+                            <i class="fa fa-arrow-right"> </i>
+                            <span class="pl-1">view</span>
+                        </a>  
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="divider mt-0" style="margin-bottom: 30px;"></div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mb-3 bg-arielle-smile widget-chart text-white card-border">
+                    <div class="icon-wrapper rounded-circle">
+                        <div class="icon-wrapper-bg bg-white opacity-10"></div>
+                        <i class="lnr-cog icon-gradient bg-arielle-smile"></i>
+                    </div>
+                    <div class="widget-numbers">@Model.OfferCount</div>
+                    <div class="widget-subheading">Total Offers in Website</div>
+                    <div class="widget-description text-dark">
+                        <a href="@Url.Action("Index", "Offers")">
+                            <i class="fa fa-angle-up "> </i>
+                            <span class="pl-1">view</span>
+                        </a> 
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-3 bg-warm-flame widget-chart text-white card-border">
+                    <div class="icon-wrapper rounded">
+                        <div class="icon-wrapper-bg bg-white opacity-10"></div>
+                        <i class="lnr-screen icon-gradient bg-warm-flame"></i>
+                    </div>
+                    <div class="widget-numbers">@Model.StockCount</div>
+                    <div class="widget-subheading">Stock places</div>
+                    <div class="widget-description text-white">
+                        <a href="@Url.Action("Index", "Stocks")">
+                            <span class="pr-1">view</span>
+                            <i class="fa fa-arrow-left "> </i>
+                        </a> 
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-3 bg-ripe-malin widget-chart text-white card-border">
+                    <div class="icon-wrapper rounded">
+                        <div class="icon-wrapper-bg bg-white opacity-2"></div>
+                        <i class="lnr-laptop-phone text-white"></i>
+                    </div>
+                    <div class="widget-numbers">@Model.ShipperCount</div>
+                    <div class="widget-subheading">Shipper Companies</div>
+                    <div class="widget-description text-white">
+                        <a href="@Url.Action("Index", "Shippers")">
+                            <span class="pl-1">view</span>
+                            <i class="fa fa-angle-up "> </i>
+                        </a> 
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-3 bg-mixed-hopes widget-chart text-white card-border">
+                    <div class="icon-wrapper rounded">
+                        <div class="icon-wrapper-bg bg-dark opacity-9"></div>
+                        <i class="lnr-graduation-hat text-white"></i>
+                    </div>
+                    <div class="widget-numbers">@Model.OrderCount</div>
+                    <div class="widget-subheading">Total Orders</div>
+                    <div class="widget-description text-dark">
+                        <a href="@Url.Action("Index", "Orders")">
+                            <i class="fa fa-arrow-right "> </i>
+                            <span class="pl-1">view</span></div>
+                        </a>
+                </div>
+            </div> 
+            <div class="col-md-4">
+                <div class="card mb-3 bg-grow-early widget-chart text-white card-border">
+                    <div class="icon-wrapper rounded-circle">
+                        <div class="icon-wrapper-bg bg-white opacity-2"></div>
+                        <i class="lnr-laptop-phone text-white"></i>
+                    </div>
+                    <div class="widget-numbers">@Model.CommentCount</div>
+                    <div class="widget-subheading">Total Comment</div>
+                    <div class="widget-description text-white">
+                        <a href="@Url.Action("Index", "Comment")">
+                            <span class="pl-1">view</span>
+                            <i class="fa fa-angle-up "> </i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            @*  
+            <div class="col-md-4">
+                <div class="card mb-3 bg-plum-plate widget-chart text-white card-border">
+                    <div class="icon-wrapper rounded-circle">
+                        <div class="icon-wrapper-bg bg-dark opacity-9"></div>
+                        <i class="lnr-graduation-hat text-white"></i>
+                    </div>
+                    <div class="widget-numbers">63.2k</div>
+                    <div class="widget-subheading">Bugs Fixed</div>
+                    <div class="widget-description text-white opacity-8">
+                        <i class="fa fa-arrow-right ">
+            
+                        </i>
+                        <span class="pl-1">175.5%</span></div>
+                </div>
+            </div>
+            *@
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<EbayView.Models.ViewModel.SubCategory.GetSubCategoriesOutputModel>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+<table class="table table-striped table-bordered table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubCatName)
+            </th>
+            <th>Edit</th> 
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{int i= 1;}
+        @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @i
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SubCatName)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.SubCategoryId" class="btn btn-primary">Edit</a> 
+                        @*<a asp-action="Details" asp-route-id="@item.SubCategoryId">Details</a> |*@ 
+                    </td>
+                    <td>
+                        <a asp-action="Delete" asp-route-id="@item.SubCategoryId" class="btn btn-primary">Delete</a>
+                    </td>
+                        @{i++; }
+                </tr>
+        }
+    </tbody>
+</table>

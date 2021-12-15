@@ -1,0 +1,43 @@
+﻿@model IEnumerable<EbayView.Models.ViewModel.Shippers.GetShippersOutputModel>
+
+ 
+<h1 style="width:100%;text-align:center;display:block;margin:10px auto;">All Shipper Company</h1>
+
+<p style="width:100%;text-align:center;display:block;margin:10px auto;">
+    <a asp-action="Create" class="btn btn-primary">Create New Shipper Company</a>
+</p>
+<table class="table table-striped table-bordered table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>#</th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShipperName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.URL)
+            </th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int i = 1;}
+@foreach (var item in Model) {
+        <tr>
+            <td>@i</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShipperName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.URL)
+            </td>
+            <td><a asp-action="Edit" asp-route-id="@item.ShipperId" class="btn btn-primary">Edit</a></td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@item.ShipperId" class="btn btn-primary">Delete</a>
+            </td>
+                @{  i++;}
+        </tr>
+}
+    </tbody>
+</table>

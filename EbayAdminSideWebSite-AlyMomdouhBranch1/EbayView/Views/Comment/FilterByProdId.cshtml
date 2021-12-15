@@ -1,0 +1,53 @@
+﻿@model IEnumerable<EbayView.Models.ViewModel.Comments.GetCommentOutputModel>
+
+<h1 style="width:100%;text-align:center;display:block;margin:10px auto;">
+    View All Comment and Filter By Product   <span class="btn-danger">@ViewBag.SelectedProdName</span>
+</h1>
+ 
+<table class="table table-striped table-bordered table-hover">
+    <thead class="thead-dark">
+         <tr>
+            <th>#</th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th> 
+            @*<th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th> 
+            <th>
+                Delete
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @{  int i = 1;}
+@foreach (var item in Model) {
+        <tr>
+            <td>@i</td> 
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            
+            <td> 
+                @Html.ActionLink("Delete", "Delete", new { UserId=item.UserId,  ProdId=item.ProductId },new {@class="btn btn-primary"})
+            </td>
+                @{  i++;}
+        </tr>
+}
+    </tbody>
+</table>
+<div class="w-100 text-center">
+	<a asp-action="Index" class="btn btn-primary">Back to List To View All Comment</a>
+</div>

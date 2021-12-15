@@ -1,0 +1,99 @@
+﻿@model EbayView.Models.ViewModel.Products.GetProductDetailsOutputModel
+
+@{
+    ViewData["Title"] = "Edit Product page ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="w-100 text-center">Edit Edit Product page</h1>
+ 
+<hr />
+<div class="row">
+    <div class="col-md-8 mx-auto shadow p-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ProductId" />
+            <div class="row">
+                <div class="col-6 bp-2">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="col-6 bp-2">
+                    <label asp-for="Price" class="control-label"></label>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 bp-2">
+                    <label asp-for="Quantity" class="control-label"></label>
+                    <input asp-for="Quantity" class="form-control" />
+                    <span asp-validation-for="Quantity" class="text-danger"></span>
+                </div>
+                <div class="col-6 bp-2">
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 bp-2">
+                    <label asp-for="categoryName" class="control-label"></label>
+                    <input asp-for="categoryName" class="form-control" />
+                    <span asp-validation-for="categoryName" class="text-danger"></span>
+                </div>
+                <div class="col-6 bp-2">
+                    <label asp-for="categoryName" class="control-label"></label>
+                    <select asp-for="categoryName" class="form-control" asp-items="ViewBag.CatId"></select>
+                    <span asp-validation-for="categoryName" class="text-danger"></span>
+                </div>
+             </div>
+             <div class="row">
+                <div class="col-6 bp-2">
+                    <label asp-for="brandName" class="control-label"></label>
+                    <input asp-for="brandName" class="form-control" />
+                     <span asp-validation-for="brandName" class="text-danger"></span>
+                </div>
+                <div class="col-6 bp-2">
+                    <label asp-for="brandName" class="control-label"></label>
+                    <select asp-for="brandName" class="form-control" asp-items="ViewBag.BrandId"></select>
+                    <span asp-validation-for="brandName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 bp-2">
+                    <label asp-for="stockName" class="control-label"></label>
+                    <input asp-for="stockName" class="form-control" />                    
+                    <span asp-validation-for="stockName" class="text-danger"></span>
+                </div>
+                <div class="col-6 bp-2">
+                    <label asp-for="stockName" class="control-label"></label>
+                    <select asp-for="stockName" class="form-control" asp-items="ViewBag.StockId"></select>
+                    <span asp-validation-for="stockName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 bp-2">
+                    <label asp-for="subcategoryName" class="control-label"></label>
+                    <input asp-for="subcategoryName" class="form-control" /> 
+                    <span asp-validation-for="subcategoryName" class="text-danger"></span>
+                </div>
+                <div class="col-6 bp-2">
+                    <label asp-for="subcategoryName" class="control-label"></label>
+                    <select asp-for="subcategoryName" class="form-control" asp-items="ViewBag.SubCatId"></select>
+                    <span asp-validation-for="subcategoryName" class="text-danger"></span>
+                </div>
+             </div>
+            <div class="form-group">
+                <input type="submit" value="Save Product" class="btn btn-primary w-auto" />
+            </div>
+        </form>
+    </div>
+    <div>
+    <a asp-action="Index" class="btn btn-primary m-4">Back to List</a>
+</div>
+</div>
+
+
+ 

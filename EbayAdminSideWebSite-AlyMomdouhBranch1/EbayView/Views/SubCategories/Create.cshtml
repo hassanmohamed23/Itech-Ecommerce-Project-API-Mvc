@@ -1,0 +1,43 @@
+﻿@model EbayView.Models.ViewModel.SubCategory.CreateSubCategoryInputModel
+
+<div class="w-100 text-center m-2">
+	<h1 class="bg-primary m-2">Create SubCategory Item</h1>
+</div>
+ <br />
+<hr />
+<br />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                <label asp-for="CatId" class="control-label"></label>
+                <select asp-for="CatId" class ="form-control" asp-items="ViewBag.CatId"></select>
+            </div>*@
+            <div class="form-group">
+				<label asp-for="CatId" class="control-label"></label> 
+				<select class="form-control" name="CatId">
+					@foreach (var category in ViewBag.AvailableCategories)
+					{
+						<option value="@category.CategoryId">@category.CategoryName</option>
+					}
+				</select>
+			</div>
+            <div class="form-group">
+                <label asp-for="SubCatName" class="control-label"></label>
+                <input asp-for="SubCatName" class="form-control" />
+                <span asp-validation-for="SubCatName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div>
+    <a asp-action="Index" class="btn btn-primary">Back to List</a>
+</div>
+</div>
+
+
+ 
